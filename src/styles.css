@@ -1,0 +1,26 @@
+.has-underline {
+  text-decoration: underline;
+}
+
+.hero.is-medium .hero-body {
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+}
+
+.hero-main {
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+.hero-small {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+a {
+  color: #3273dc;
+  cursor: pointer;
+  -webkit-transition: none 86ms ease-out;
+  transition: none 86ms ease-out;
+  /* text-decoration: underline; */
+}

@@ -1,0 +1,87 @@
+<!-- contract info -->
+<section class="hero is-medium is-danger is-bold">
+  <div class="hero-body hero-small">
+    <div class="container">
+      <h1 class="title is-1">
+        PizzaCoin ~ Angular4 ~ Truffle ~ Ethereum DAPP 
+      </h1>      
+      <h2 class="title"> 
+          Contract balance {{contractETHBalance}} ETH, 
+          {{contractTokensTotal}} total PizzaCoins for sale, 
+          {{contractTokensAvailable}} available for purchase
+      </h2>      
+    </div>
+  </div>
+</section>
+<!-- voter info -->
+<section class="hero is-info is-bold">
+  <div class="hero-body hero-small">
+    <div class="container">
+      <h4 class="title">
+        You have {{voterETHBalance}} ETH, 
+        you bought {{voterTokensBought}} PizzaCoins, 
+        you have {{voterTokensBalance}} left
+      </h4>
+    </div>
+  </div>
+</section>
+<!-- status -->
+<section class="hero is-primary is-bold">
+  <div class="hero-body hero-small">
+    <div class="container">
+      <h2 class="title">Status: {{status}}</h2>
+    </div>
+  </div>
+</section>
+<br>
+
+<div class="container" style="margin-bottom:20px">
+    <div class="columns">
+      <div class="column">
+        <h3 class="title is-3"><a href="https://ropsten.etherscan.io/address/0x747e4c8d7d5e600bae6d619a7ceae252a9fdbd8e" target="_blank">contract link</a></h3>
+      </div>
+      <div class="column">
+        <h3 class="title is-3"><a href="{{voterUrl}}" target="_blank">voter address</a></h3>
+      </div>
+      <div class="column">
+        <h3 class="title is-3"><a href="javascript:void(0)" (click)="unlockAccount()">unlock</a></h3>
+      </div>
+      <div class="column is-one-quarter" style="padding:0px">
+          <div class="field has-addons">
+              <div class="control">
+                <input type="text" class="input is-info is-large" placeholder="token amount"  #tokensToBuy>
+                <span class="icon is-medium is-left">
+                  <i class="fa fa-futbol-o"></i>
+                </span>
+              </div>
+              <div class="control">
+                  <a class="button is-info is-large" (click)="buyTokens(tokensToBuy.value)">BUY</a>
+              </div>
+            </div>          
+      </div>
+    </div>    
+</div>
+
+<div class="container">
+  <div class="columns is-multiline">    
+    <div class="column card is-one-quarter" *ngFor="let pizza of pizzaArray">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="{{pizza.image}}" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{pizza.name}}</p>            
+          </div>
+        </div>
+        <div class="content">
+          <p>total votes: {{pizza.votes}}</p>
+          <p>user votes: {{pizza.userVotes}}</p>
+        </div>
+        <a class="button" style="color:white;background-color:#3273dc" (click)="voteForPizza(pizza.name)">vote</a>
+      </div>
+    </div> 
+  </div>
+</div>

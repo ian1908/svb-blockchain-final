@@ -1,0 +1,77 @@
+## new account
+web3.personal.newAccount('X!91h8G$002f')
+
+## check balance
+web3.eth.getBalance('0x4d64a30343aad39d18cdf7dfa545336a16308275')
+
+## get ether - send to newly created account
+http://faucet.ropsten.be:3001/
+
+## unlock account
+web3.personal.unlockAccount('0x4d64a30343aad39d18cdf7dfa545336a16308275', 'X!91h8G$002f', 15000)
+
+## new publish -- delete contracts in build
+truffle compile
+
+## publish (see truffle-config.js for dev environment)
+truffle migrate --network development
+
+## voting contract address --- also address in Voting.json
+Running migration: 2_deploy_contracts.js
+  Deploying Voting...
+  Voting: 0x747e4c8d7d5e600bae6d619a7ceae252a9fdbd8e <-- voting contract address
+
+## 2nd voter
+web3.personal.newAccount('X!91h8G$002g')
+web3.eth.getBalance('0x899dd221d6feebb010150065f8d0a80ae38725e3')
+web3.personal.unlockAccount('0x899dd221d6feebb010150065f8d0a80ae38725e3', 'X!91h8G$002g', 15000)
+
+
+## 3rd voter
+web3.personal.newAccount('X!91h8G$002g')
+web3.eth.getBalance('0x5621dc86c7f73ca2cc93d51bd529ca5e4d445adb')
+web3.personal.unlockAccount('0x5621dc86c7f73ca2cc93d51bd529ca5e4d445adb', 'X!91h8G$002g', 15000)
+
+
+
+
+
+################################################
+new account on metamask (need gas to publish)
+
+#open metamask
+install metamask puglin -- select ropsten
+create new account with password: X!91h8G$002f
+
+#save metamask seed 
+hawk matrix cruel hunt unique wall salt tongue goose ostrich detect nature
+
+#save account public address
+0x81b7e08f65bdf5648606c89998a9cc8164397647
+
+#request one test ether
+https://faucet.metamask.io/
+
+#see transaction url
+
+#open truffle console
+truffle console
+
+#check balance
+web3.eth.getBalance('0x81b7e08f65bdf5648606c89998a9cc8164397647')
+################################################
+
+
+
+##unlock
+web3.personal.unlockAccount('0x81b7e08f65bdf5648606c89998a9cc8164397647', 'cd14aaa10ed50fdb551cfea5f6f6e38597682ead8b38cbcd611e553ef2255b0e', 15000)
+
+
+## new publish -- delete contracts in build
+truffle compile
+
+## publish (see truffle-config.js for dev environment)
+truffle migrate --network development
+
+
+voting: 0xd5cb18cc8017ea5574730c3aea1b09a5b9d704bb
