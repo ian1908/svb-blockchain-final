@@ -1,7 +1,9 @@
-pragma solidity ^0.4.11;
 // We have to specify what version of compiler this code will compile with
+pragma solidity ^0.4.11;
 
+// Smart Contract
 contract Voting {
+
 // We use the struct datatype to store the voter information.
   struct voter {
     address voterAddress; // The address of the voter
@@ -10,25 +12,30 @@ contract Voting {
     /* We have an array of pizzas initialized below.
      Every time this voter votes with her tokens, the value at that
      index is incremented. Example, if pizzaList array declared
-     below has ["Rama", "Nick", "Jose"] and this
+     below has ["pizza1", "pizza2", "pizza3"] and this
      voter votes 10 tokens to Nick, the tokensUsedPerPizza[1]
      will be incremented by 10.
      */
   }
 
-  /* mapping is equivalent to an associate array or hash
-   The key of the mapping is pizza name stored as type bytes32 and value is
-   an unsigned integer which used to store the vote count
-   */
-
-  mapping (address => voter) public voterInfo;
-
-  /* Solidity doesn't let you return an array of strings yet. We will use an array of bytes32
-   instead to store the list of pizzas
+  /* 
+      Mapping is equivalent to an associate array or hash
+      The key of the mapping is pizza name stored as type bytes32 and value is
+      an unsigned integer which used to store the vote count
+      (keyType => valueType) mapName
+      {
+        pizzaName: votes
+      } 
    */
 
   mapping (bytes32 => uint) public votesReceived;
-
+  mapping (address => voter) public voterInfo;
+  
+  /*  
+      Solidity doesn't let you return an array of strings yet. We will use an array of bytes32
+      instead to store the list of pizzas
+  */
+  
   bytes32[] public pizzaList;
 
   uint public totalTokens; // Total no. of tokens available for this election
@@ -94,8 +101,7 @@ contract Voting {
 
   /* This function is used to purchase the tokens. Note the keyword 'payable'
    below. By just adding that one keyword to a function, your contract can
-   now accept Ether from anyone who calls this function. Accepting money can
-   not get any easier than this!
+   now accept Ether from anyone who calls this function.
    */
 
   function buy() payable returns (uint) {

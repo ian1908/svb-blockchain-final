@@ -33,7 +33,9 @@ web3.eth.getBalance('0x5621dc86c7f73ca2cc93d51bd529ca5e4d445adb')
 web3.personal.unlockAccount('0x5621dc86c7f73ca2cc93d51bd529ca5e4d445adb', 'X!91h8G$002g', 15000)
 
 
-
+## 4th voter (hyperv01)
+web3.personal.newAccount('X!91h8G$002g')
+web3.eth.getBalance('0x382902e655689a50246c2ae4086ad60e78738aa9')
 
 
 ################################################
@@ -46,8 +48,13 @@ create new account with password: X!91h8G$002f
 #save metamask seed 
 hawk matrix cruel hunt unique wall salt tongue goose ostrich detect nature
 
+#private key
+cd14aaa10ed50fdb551cfea5f6f6e38597682ead8b38cbcd611e553ef2255b0e
+
 #save account public address
-0x81b7e08f65bdf5648606c89998a9cc8164397647
+0x81b7e08f65bdf5648606c89998a9cc8164397647 -- old?
+0x7023d5B925f9e70f1Fafe182d000259EA927542B -- new test wallet
+web3.eth.getBalance('0x7023d5B925f9e70f1Fafe182d000259EA927542B')
 
 #request one test ether
 https://faucet.metamask.io/
@@ -62,7 +69,6 @@ web3.eth.getBalance('0x81b7e08f65bdf5648606c89998a9cc8164397647')
 ################################################
 
 
-
 ##unlock
 web3.personal.unlockAccount('0x81b7e08f65bdf5648606c89998a9cc8164397647', 'cd14aaa10ed50fdb551cfea5f6f6e38597682ead8b38cbcd611e553ef2255b0e', 15000)
 
@@ -75,3 +81,19 @@ truffle migrate --network development
 
 
 voting: 0xd5cb18cc8017ea5574730c3aea1b09a5b9d704bb
+
+## dummy 02 - themachine
+#address
+web3.personal.newAccount('X!91h8G$002g')
+
+#account
+0x09a74d849d4821b0b6abceed88fa36657c14bb62
+
+#password
+X!91h8G$002g
+
+#unlockAccount
+web3.personal.unlockAccount('0x09a74d849d4821b0b6abceed88fa36657c14bb62', 'X!91h8G$002g', 15000)
+web3.eth.getBalance('0x09a74d849d4821b0b6abceed88fa36657c14bb62')
+
+

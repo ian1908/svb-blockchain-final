@@ -12,7 +12,7 @@ declare var window: any;
 })
 
 export class AppComponent {
-  Voting = contract(voting_artifacts);
+  Voting = contract(voting_artifacts); 
   
   account: any; // first account in contract -- contract creator
   accounts: any; // all accounts in contract
@@ -26,6 +26,7 @@ export class AppComponent {
   voter: string = '0x899dd221d6feebb010150065f8d0a80ae38725e3'; // set voter address here
   voterPassword: string = 'X!91h8G$002g'; // set voter password here
   voterUrl: string = 'https://ropsten.etherscan.io/address/' + this.voter; // shows etherscan details of voter account
+  contractUrl: string = 'https://ropsten.etherscan.io/address/0x747e4c8d7d5e600bae6d619a7ceae252a9fdbd8e'
   
   voterTokensBought: number; // holds total value of tokens bought by voter account
   voterTokensBalance: number; // holds total tokens open for spending for voter account
@@ -87,29 +88,30 @@ export class AppComponent {
   populatePizzas(){
     // gets pizza list from contract
     this.Voting.deployed().then(contractInstance => {
-        contractInstance.allPizzas.call().then(pizzaArray => {
-          
-          this.lookupVoterInfo(); 
+      contractInstance.allPizzas.call().then(pizzaArray => {
+        
+        this.lookupVoterInfo(); 
 
-          for(let i=0; i < pizzaArray.length; i++){
-            contractInstance.totalVotesFor.call(this.web3.toUtf8(pizzaArray[i])).then(v => 
-              {
-                console.log("pizza votes - " + this.web3.toUtf8(pizzaArray[i]) + ": " + v)
-                // set pizza names and id's to array  
-                this.pizzaArray.push(
-                  new Pizza(
-                    i, // id
-                    this.web3.toUtf8(pizzaArray[i]), // name
-                    '../assets/images/pizzas/pizza-' + i + '.PNG', // image
-                    v.toString() // votes
-                    ,0
-                  )
-                ) 
-              });
-          };
-        })
-      }
-    );
+        for(let i=0; i < pizzaArray.length; i++){
+          console.log("before conversion: " + pizzaArray[i]);
+          console.log("convert to utf: " + this.web3.toUtf8(pizzaArray[i]));
+          contractInstance.totalVotesFor.call(this.web3.toUtf8(pizzaArray[i])).then(v => 
+            {
+              console.log("pizza votes - " + this.web3.toUtf8(pizzaArray[i]) + ": " + v)
+              // set pizza names and id's to array  
+              this.pizzaArray.push(
+                new Pizza(
+                  i, // id
+                  this.web3.toUtf8(pizzaArray[i]), // name
+                  '../assets/images/pizzas/pizza-' + i + '.PNG', // image
+                  v.toString() // votes
+                  ,0
+                )
+              ) 
+            });
+        };
+      })
+    });
   }
 
   unlockAccount(){
@@ -199,11 +201,6 @@ export class AppComponent {
   }  
 
   populateTokenData(){
-
-    // contractTokensTotal:number;
-    // contractTokensAvailable:number;
-    // contractETHBalance: number;
-
     this.Voting.deployed().then(
       contractInstance => {
         // tokens total
